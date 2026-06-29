@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         node {
-            label 'docker-agent-python'
+        label 'docker-agent-python'
             }
       }
     triggers {
@@ -13,6 +13,8 @@ pipeline {
                 echo "Building.."
                 sh '''
                 cd myapp
+                python -m venv venv
+                . venv/bin/activate
                 pip install -r requirements.txt
                 '''
             }
