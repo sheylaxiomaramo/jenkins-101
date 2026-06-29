@@ -20,14 +20,15 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                echo "Testing.."
-                sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
-                '''
-            }
+        steps {
+        echo "Testing.."
+        sh '''
+            cd myapp
+            . venv/bin/activate
+            python hello.py
+            python hello.py --name=Brad
+        '''
+           }
         }
         stage('Deliver') {
             steps {
